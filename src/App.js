@@ -12,6 +12,15 @@ class App extends React.Component {
   render() {
   return (
     <div className="App">
+      <button onClick={e => {
+        e.preventDefault();
+        if (this.props.socket) {
+          this.props.socket.send(JSON.stringify({
+            type: "HELLO",
+            data: "World"
+          }));
+        }
+      }}>Send message</button>
       <BrowserRouter>
         <Switch>
 
